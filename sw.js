@@ -1,12 +1,9 @@
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js', {scope: '/some_scope'}).then(
-            registration => {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            },
-            err => {
-                console.log('ServiceWorker registration failed: ', err);
-            }
-        );
-    });
-}
+self.addEventListener('install', function(event) {
+    console.log('installed!', event)
+});
+self.addEventListener('activate', function(event) {
+    console.log('activated!', event)
+});
+self.addEventListener('fetch', function(event) {
+    console.log('fetch', event)
+});
